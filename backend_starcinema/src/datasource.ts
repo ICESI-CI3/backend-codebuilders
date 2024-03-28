@@ -14,5 +14,5 @@ export const connectionSource = new DataSource({
     synchronize: false,
     name: 'default',
     entities: ['src/**/**.entity{.ts,.js}'],
-    migrations: ['src/migration/**/*{.ts,.js}'],
+    migrations: ['src/migrations/**/*{.ts,.js}'],
 });
