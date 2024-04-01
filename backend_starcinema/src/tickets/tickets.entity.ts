@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Customer } from '../users/customer.entity';
+import { Customer } from '../roles/customer.entity';
 
 @Entity()
 export class Ticket {

@@ -1,8 +1,8 @@
 import { DataSource } from "typeorm";
 import { User } from "./users.entity";
-import { Admin } from "./admin.entity";
-import { Employee } from "./employee.entity";
-import { Customer } from "./customer.entity";
+import { Admin } from "../roles/admin.entity";
+import { Employee } from "../roles/employee.entity";
+import { Customer } from "../roles/customer.entity";
 
 export const userProviders = [
     {

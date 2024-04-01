@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User } from './users.entity';
-import { createAdminDto } from './dto/create-user-dto';
+import { createEmployeeDto } from './dto/create-employee-dto';
 import * as bcrypt from 'bcrypt';
+import { createCustomerDto } from './dto/create-customer-dto';
 
 @Injectable()
 export class UsersService {
@@ -19,20 +20,21 @@ export class UsersService {
     ) {}
 
     async findOne(email:string): Promise<User | undefined> {
-        return this.usersRepository.findOne({ where: { email } });
+        const user = await this.usersRepository.findOne({ where: { email: email}});
+        return user;
     }
 
-    async create(user: createAdminDto): Promise<User> {
+    async create_employee(user: createEmployeeDto): Promise<createEmployeeDto> {
         const hashedPassword = await bcrypt.hashSync(user.password, 10);
-        user.password = hashedPassword;
-        
-        switch(user.role) {
-            case 'admin':
-                return this.adminsRepository.save(user);
-            case 'employee':
-                return this.employeesRepository.save(user);
-            case 'customer':
-                return this.customersRepository.save(user);
-        }
+        user.password = hashedPassword;        
+        this.usersRepository.save(user);
+        return this.employeesRepository.save(user); 
+    }
+
+    async create_customer(user): Promise<any> {
+        const hashedPassword = await bcrypt.hashSync(user.password, 10);
+        user.password = hashedPassword;        
+        this.usersRepository.save(user);
+        return this.customersRepository.save(user);
     }
 }

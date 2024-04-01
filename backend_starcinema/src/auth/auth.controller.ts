@@ -1,7 +1,9 @@
 import { Controller, HttpStatus, HttpCode, Post,Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Public } from 'src/decorators/public';
-import { createAdminDto } from 'src/users/dto/create-user-dto';
+import { createEmployeeDto } from 'src/users/dto/create-employee-dto';
+import { Roles } from 'src/roles/roles.decorator';
+import { Role } from 'src/roles/roles.enum';
 
 @Controller('auth')
 export class AuthController {
@@ -14,10 +16,19 @@ export class AuthController {
       return this.authService.signIn(signInDto.email, signInDto.password);
     }
 
+    @HttpCode(HttpStatus.CREATED)
+    @Post('register_employee')
+    @Roles(Role.Admin)
+    signUpEmployee(@Body() signUpDto: createEmployeeDto) { 
+      signUpDto.role = 'employee';     
+      return this.authService.signUpEmployee(signUpDto);
+    }
+
     @Public()
     @HttpCode(HttpStatus.CREATED)
-    @Post('register')
-    signUp(@Body() signUpDto: createAdminDto) {
+    @Post('register_customer')
+    signUpCustomer(@Body() signUpDto) { 
+      signUpDto.role = 'customer';     
       return this.authService.signUp(signUpDto);
     }
 }

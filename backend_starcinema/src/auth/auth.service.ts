@@ -1,7 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { createAdminDto } from 'src/users/dto/create-user-dto';
+import { createCustomerDto } from 'src/users/dto/create-customer-dto';
+import { createEmployeeDto } from 'src/users/dto/create-employee-dto';
 import { UsersService } from 'src/users/users.service';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -13,7 +15,8 @@ export class AuthService {
 
     async signIn(email: string,pass: string,): Promise<{ access_token: string }> {
         const user = await this.usersService.findOne(email);
-        if (user?.password !== pass) {
+        
+        if (!bcrypt.compareSync(pass, user?.password)) {
           throw new UnauthorizedException();
         }
         const payload = { sub: user.id, username: user.email, roles: user.role};
@@ -22,8 +25,13 @@ export class AuthService {
         };
     }
 
-    async signUp(signUpDto: createAdminDto): Promise<createAdminDto> {
-        const user = await this.usersService.create(signUpDto);
+    async signUp(signUpDto:createCustomerDto): Promise<createCustomerDto> {
+        const user = await this.usersService.create_customer(signUpDto);
+        return user;
+    }
+
+    async signUpEmployee(signUpDto: createEmployeeDto): Promise<createEmployeeDto> {
+        const user = await this.usersService.create_employee(signUpDto);
         return user;
     }
 }
