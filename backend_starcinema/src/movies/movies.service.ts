@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Movie } from './movies.entity';
 import { CreateMovieDto } from './dto/create-movie.dto';
@@ -30,7 +30,12 @@ export class MoviesService {
 		return this.moviesRepository.save(movie);
 	}
 
-	async delete(id: number): Promise<void> {
-		this.moviesRepository.delete(id);
+	async delete(id: number): Promise<string> {
+		const movie_found = await this.findOneById(id);
+		if (!movie_found) {
+			throw new NotFoundException('Movie not found');
+		}
+		await this.moviesRepository.delete(id);
+		return 'Movie deleted successfully';
 	}
 }

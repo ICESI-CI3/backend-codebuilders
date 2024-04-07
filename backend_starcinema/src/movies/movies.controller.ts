@@ -16,7 +16,7 @@ import { MoviesService } from './movies.service';
 
 @Controller('movies')
 export class MoviesController {
-	constructor(private moviesService: MoviesService) {}
+	constructor(private readonly moviesService: MoviesService) {}
 
 	@Public()
 	@HttpCode(HttpStatus.OK)
