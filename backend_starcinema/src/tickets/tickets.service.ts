@@ -15,11 +15,16 @@ export class TicketsService {
 		return this.ticketsRepository.find();    
 	}
 
-	async findOneById(id: number): Promise<Ticket> {
-		return this.ticketsRepository.findOne({
-			where: { id: id },
-		});
-	}
+    async findOneById(id: number): Promise<Ticket> {
+        const ticket = await this.ticketsRepository.findOne({
+            where: { id: id },
+        });
+        if (!ticket) {
+            throw new NotFoundException(`Ticket with ID ${id} not found`);
+        }
+        return ticket;
+    }
+    
 
 	async findLastOneByCustomer(customerId: number): Promise<Ticket> {
 		return this.ticketsRepository.findOne({
