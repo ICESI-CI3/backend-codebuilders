@@ -35,8 +35,8 @@ export class TicketsService {
         });
     }
 
-	async create(movie: CreateTicketDto): Promise<Ticket> {
-		return this.ticketsRepository.save(movie);
+	async create(ticket: CreateTicketDto): Promise<Ticket> {
+		return this.ticketsRepository.save(ticket);
 	}
 
 	async delete(id: number): Promise<string> {
