@@ -16,4 +16,5 @@ export class Movie {
 
 	@Column()
 	genres: string[];
+    functions: any;
 }

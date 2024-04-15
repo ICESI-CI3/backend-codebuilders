@@ -12,4 +12,5 @@ export class Room {
 
 	@Column({ default: true })
 	isAvailable: boolean;
+    functions: any;
 }
