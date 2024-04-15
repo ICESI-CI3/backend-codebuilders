@@ -1,5 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Customer } from '../roles/customer.entity';
+import { Movie } from 'src/movies/movies.entity';
+import { Room } from 'src/rooms/rooms.entity';
 
 @Entity()
 export class Ticket {
@@ -12,11 +14,11 @@ export class Ticket {
   @Column()
   functionDate: Date;
 
-  @Column()
-  theater: string;
+  @ManyToOne(() => Movie)
+  movie: Movie;
 
-  @Column()
-  room: string;
+  @ManyToOne(() => Room)
+  room: Room;
 
   @Column()
   seat: string;

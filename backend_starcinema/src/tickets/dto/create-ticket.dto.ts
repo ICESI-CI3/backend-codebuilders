@@ -1,11 +1,32 @@
-export class CreateTicketDto {
-        readonly purchaseDate: Date;
-        readonly functionDate: Date;
-        readonly theater: string;
-        readonly room: string;
-        readonly seat: string;
-        readonly price: number;
-        readonly format: string;
-        readonly customerId: number;
-}
+import { IsDate, IsNotEmpty, IsNumber, IsString, IsUUID } from 'class-validator';
 
+export class CreateTicketDto {
+    @IsDate()
+    @IsNotEmpty()
+    readonly purchaseDate: Date;
+
+    @IsDate()
+    @IsNotEmpty()
+    readonly functionDate: Date;
+
+    @IsNotEmpty()
+    readonly movieId: string;  
+
+    @IsNotEmpty()
+    readonly roomId: string; 
+
+    @IsString()
+    @IsNotEmpty()
+    readonly seat: string;
+
+    @IsNumber()
+    @IsNotEmpty()
+    readonly price: number;
+
+    @IsString()
+    @IsNotEmpty()
+    readonly format: string;
+
+    @IsNotEmpty()
+    readonly customerId: string; 
+}
