@@ -9,9 +9,9 @@ import {
 	Post,
 	Put,
 } from '@nestjs/common';
-import { Public } from 'src/decorators/public';
-import { Roles } from 'src/roles/roles.decorator';
-import { Role } from 'src/roles/roles.enum';
+import { Public } from '../decorators/public';
+import { Roles } from '../roles/roles.decorator';
+import { Role } from '../roles/roles.enum';
 import { CreateFunctionDto } from './dto/create-function.dto';
 import { UpdateFunctionDto } from './dto/update-function.dto';
 import { FunctionsService } from './functions.service';

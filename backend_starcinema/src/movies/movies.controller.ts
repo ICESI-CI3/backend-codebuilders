@@ -8,9 +8,9 @@ import {
 	Param,
 	Post,
 } from '@nestjs/common';
-import { Public } from 'src/decorators/public';
-import { Roles } from 'src/roles/roles.decorator';
-import { Role } from 'src/roles/roles.enum';
+import { Public } from '../decorators/public';
+import { Roles } from '../roles/roles.decorator';
+import { Role } from '../roles/roles.enum';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { MoviesService } from './movies.service';
 

@@ -10,8 +10,8 @@ import {
 } from '@nestjs/common';
 import { TicketsService } from './tickets.service';
 import { CreateTicketDto } from './dto/create-ticket.dto';
-import { Roles } from 'src/roles/roles.decorator';
-import { Role } from 'src/roles/roles.enum';
+import { Roles } from '../roles/roles.decorator';
+import { Role } from '../roles/roles.enum';
 
 @Controller('tickets')
 export class TicketsController {

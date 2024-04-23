@@ -1,9 +1,9 @@
 import { Controller, HttpStatus, HttpCode, Post,Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { Public } from 'src/decorators/public';
-import { createEmployeeDto } from 'src/users/dto/create-employee-dto';
-import { Roles } from 'src/roles/roles.decorator';
-import { Role } from 'src/roles/roles.enum';
+import { Public } from '../decorators/public';
+import { createEmployeeDto } from '../users/dto/create-employee-dto';
+import { Roles } from '../roles/roles.decorator';
+import { Role } from '../roles/roles.enum';
 
 @Controller('auth')
 export class AuthController {
