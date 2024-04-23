@@ -8,5 +8,6 @@ import { functionProviders } from './functions.providers';
 	imports: [DatabaseModule],
 	controllers: [FunctionsController],
 	providers: [...functionProviders, FunctionsService],
+	exports: [FunctionsService]
 })
 export class FunctionModule {}

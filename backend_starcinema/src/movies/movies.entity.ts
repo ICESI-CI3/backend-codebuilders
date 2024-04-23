@@ -14,7 +14,7 @@ export class Movie {
 	@Column()
 	duration: number;
 
-	@Column()
+	@Column('text', {array: true, default: '{}'})
 	genres: string[];
     functions: any;
 }
