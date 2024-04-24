@@ -1,10 +1,10 @@
 ﻿
 ## Informe StarCinema
 
-#### **Generalidades del Proyecto**
+### **Generalidades del Proyecto**
 Este proyecto se basa en el framework NestJS, un framework para Node.js diseñado para construir aplicaciones del lado del servidor eficientes y escalables. El proyecto se basa en el dominio de un Cine llamado "StarCinema" el cual tiene una estructura dada por usuarios, películas, salas, funciones y tickets, incorporando características de autenticación y autorización, así como persistencia de datos utilizando PostgreSQL con TypeORM.
 
-#### **Descripción de Endpoints y Funcionalidades**
+### **Descripción de Endpoints y Funcionalidades**
 
 1. **Películas (Movies)**
    - **GET `/movies`**: Lista todas las películas. Acceso público.
@@ -36,16 +36,23 @@ Este proyecto se basa en el framework NestJS, un framework para Node.js diseñad
    - **POST `/tickets/create`**: Crea un nuevo ticket. Restringido a `Employee`.
    - **DELETE `/tickets/:id`**: Elimina un ticket por ID. Restringido a `Admin`.
 
-#### **Autenticación y Autorización**
+### **Ejecución de Pruebas**
+El proyecto implementa pruebas unitarias y de integración utilizando Jest, un popular framework de pruebas para JavaScript. Cada módulo del proyecto contiene archivos de especificaciones de pruebas que detallan cómo se prueban los componentes. Las pruebas cubren:
+
+-   **Controladores**: Se prueban para asegurar que manejan correctamente las solicitudes HTTP y las respuestas esperadas.
+-   **Servicios**: Se prueban para verificar la lógica de negocio y la interacción con la base de datos.
+-   **Guardias de Seguridad (Auth Guards)**: Se prueban para garantizar que las restricciones de acceso por roles se cumplan adecuadamente.
+
+### **Autenticación y Autorización**
 - La autenticación está implementada a través de JWT, donde los tokens son generados y verificados para cada solicitud relevante.
 - La autorización se gestiona mediante guardias de NestJS y decoradores que controlan el acceso a los endpoints basados en roles de usuario.
 - El uso de decoradores personalizados como `@Roles` ayuda a aplicar restricciones de roles directamente en los controladores.
 
-#### **Persistencia de la Base de Datos**
+### **Persistencia de la Base de Datos**
 - Se utiliza TypeORM como ORM para interactuar con PostgreSQL, facilitando la definición de entidades y la gestión de relaciones.
 - La configuración de la base de datos se maneja en el módulo `database`, que centraliza la configuración de TypeORM y la expone para su uso en otros módulos a través de proveedores.
 
-#### **Conclusiones**
+### **Conclusiones**
 El proyecto está diseñado con una arquitectura sólida y modular, que permite una fácil expansión a mas funcionalidades que requiera y a la implementación de un frontend con nextJS. La seguridad y la gestión de roles están bien integradas para proteger los endpoints sensibles. La persistencia de datos está bien organizada con el uso de TypeORM, lo que simplifica las operaciones complejas de la base de datos y mejora la mantenibilidad del código.
 
 Este informe resume las funcionalidades clave implementadas en la API, ofreciendo un entendimiento de cada componente y su interacción dentro del proyecto.
