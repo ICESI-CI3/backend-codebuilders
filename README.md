@@ -94,12 +94,11 @@ Aportes realizados por:
 
 ### Proyecto
 
-Internet Computing III - Icesi University - Cali - Valle del Cauca - Colombia
+Computación en Internet III - Universidad Icesi - Cali - Valle del Cauca - Colombia
 
-## Contact
+## Contacto
 
-
-For more information, feel free to contact us through our GitHub profiles:
+Para obtener más información, no dude en contactarnos a través de nuestros perfiles de GitHub.:
 
 -   George Trujillo:  [GeorgeU2030](https://github.com/GeorgeU2030)
 -   Ricardo Medina:  [Skydoes10](https://github.com/Skydoes10)
